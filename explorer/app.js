@@ -686,7 +686,7 @@ function wireGlobal() {
 
 async function init() {
   document.getElementById('brand-title').textContent = TITLE;
-  applyTheme(store('roadmap-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'));
+  applyTheme('dark');
   let markdown;
   const diagramRequest = loadMap();
   const buildRequest = loadBuild();

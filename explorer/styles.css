@@ -15,9 +15,9 @@
 
 html[data-theme="dark"] {
   color-scheme: dark;
-  --bg: #060914;
-  --glow-a: rgba(91, 103, 255, 0.18);
-  --glow-b: rgba(20, 184, 166, 0.12);
+  --bg: #000000;
+  --glow-a: rgba(0, 0, 0, 0);
+  --glow-b: rgba(0, 0, 0, 0);
   --surface: rgba(14, 20, 37, 0.74);
   --surface-solid: #0f1628;
   --surface-2: rgba(30, 41, 68, 0.55);
