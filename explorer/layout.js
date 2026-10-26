@@ -15,7 +15,7 @@ const BOX_H2 = 42;
 const HEAD_H = 20;
 const HEAD = HEAD_H + SPACE;
 const GAP = 2 * SPACE;
-const FOOTER_H = 56;
+const FOOTER_H = 0;
 // Rough width of one character of box text, used to decide when a label wraps to two lines.
 const CHAR_W = 6.3;
 const TEXT_PAD = 8;

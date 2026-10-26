@@ -1,7 +1,7 @@
 // Interactive roadmap diagram: Software / Hardware / Soft skills areas with their cross-sections,
 // priority colors, filters and connections between topics. Laid out by layout.js to fit A4.
-import { CREDITS, GITHUB_MARK, IMPORTANCE, TITLE, areaDots, areaLabel, h, plural, svg } from './dom.js';
-import { SPACE, buildLayout } from './layout.js';
+import { IMPORTANCE, TITLE, areaDots, areaLabel, h, plural, svg } from './dom.js';
+import { buildLayout } from './layout.js';
 
 const MIN_ZOOM = 0.6;
 const MAX_ZOOM = 6;
@@ -241,33 +241,6 @@ export function createMapView({ root, plan, data, build, onSelect }) {
       t.label.setAttribute('y', (y + 11).toFixed(1));
     }
   }
-
-  // Credits: where the resources are, who maintains the roadmap, its license and revision.
-  const { x: fx, y: fy, w: fw } = layout.footer;
-  const fr = fx + fw;
-  const credits = svg('g', { class: 'page-credits' }, layers.labels);
-  const link = (href) => svg('a', { href, target: '_blank', rel: 'noopener noreferrer' }, credits);
-  const icon = svg('svg', { x: fx, y: fy + 2, width: 16, height: 16, viewBox: '0 0 16 16' }, credits);
-  svg('path', { d: GITHUB_MARK, class: 'credit-icon' }, icon);
-  const repo = svg('text', { x: fx + 24, y: fy + 15, class: 'credit-main' }, link(`https://${CREDITS.repo}`));
-  repo.textContent = `Learning resources for every topic: ${CREDITS.repo}`;
-  const creditLine = (y, label, value) => {
-    const t = svg('text', { x: fx, y, class: 'credit-text' }, credits);
-    t.append(label);
-    svg('tspan', { class: 'credit-strong' }, t).textContent = value;
-  };
-  creditLine(fy + 35, 'Creator & Maintainer: ', CREDITS.author);
-  if (build) creditLine(fy + 53, 'Revision: ', `${build.version}  ·  Last update: ${build.date}`);
-  const badge = { w: 103, h: 36 };
-  const logoSize = badge.h;
-  const iconY = fy + 9;
-  svg('image', { href: 'assets/logo.svg', x: fr - logoSize, y: iconY, width: logoSize, height: logoSize }, credits);
-  const badgeX = fr - logoSize - SPACE - badge.w;
-  svg('image', { href: 'assets/cc-by-sa.svg', x: badgeX, y: iconY, width: badge.w, height: badge.h }, link(CREDITS.licenseUrl));
-  const licenseText = svg('text', { x: badgeX - 14, y: fy + 22, 'text-anchor': 'end', class: 'credit-text' }, link(CREDITS.licenseUrl));
-  licenseText.textContent = 'This work is licensed under the Creative Commons';
-  const licenseText2 = svg('text', { x: badgeX - 14, y: fy + 40, 'text-anchor': 'end', class: 'credit-text' }, link(CREDITS.licenseUrl));
-  licenseText2.textContent = 'Attribution-ShareAlike 4.0 International License.';
 
   // ---------- topics ----------
   for (const item of layout.items) {
